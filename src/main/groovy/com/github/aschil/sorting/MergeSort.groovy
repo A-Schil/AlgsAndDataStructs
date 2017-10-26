@@ -15,8 +15,8 @@ class MergeSort {
     }
 
     static <T extends Comparable<? super T>> void merge(List<T> list, int startingIndex, int splitIndex, int endingIndex) {
-        int lengthOfLeftSubList = splitIndex - startingIndex + 1 // 3
-        int lengthOfRightSubList = endingIndex - splitIndex  // 2
+        int lengthOfLeftSubList = splitIndex - startingIndex + 1
+        int lengthOfRightSubList = endingIndex - splitIndex
 
         T[] leftSubList = new T[lengthOfLeftSubList + 1]
         (0..(lengthOfLeftSubList - 1)).each {
