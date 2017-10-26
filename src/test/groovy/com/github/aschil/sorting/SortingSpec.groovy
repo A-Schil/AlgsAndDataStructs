@@ -7,7 +7,7 @@ class SortingSpec extends Specification {
     @Unroll
     def "sorts listToSort: #listToSort into expected: #expected of numbers using #sortingStrategy"() {
         when:
-        Quicksort.sort(listToSort)
+        sortingStrategy.sort(listToSort)
 
         then:
         listToSort == expected
@@ -38,5 +38,17 @@ class SortingSpec extends Specification {
         ["A", "B", "C"]                                | MergeSort       || ["A", "B", "C"]
         ["B", "a", "A", "b"]                           | MergeSort       || ["A", "B", "a", "b"]
         ["dog", "cat", "doggo"]                        | MergeSort       || ["cat", "dog", "doggo"]
+
+        []                                             | HeapSort       || []
+        [1, 2, 3]                                      | HeapSort       || [1, 2, 3]
+        [1, 5, 6, 9, 2]                                | HeapSort       || [1, 2, 5, 6, 9]
+        [5]                                            | HeapSort       || [5]
+        [1, 2, 2, 2, 2, 3]                             | HeapSort       || [1, 2, 2, 2, 2, 3]
+        [2.0, 4.8, 3.995, 3.99999, 1, 9.2357, 3.14159] | HeapSort       || [1, 2.0, 3.14159, 3.995, 3.99999, 4.8, 9.2357]
+        [1, -1, 0]                                     | HeapSort       || [-1, 0, 1]
+        ["A", "C", "D", "B"]                           | HeapSort       || ["A", "B", "C", "D"]
+        ["A", "B", "C"]                                | HeapSort       || ["A", "B", "C"]
+        ["B", "a", "A", "b"]                           | HeapSort       || ["A", "B", "a", "b"]
+        ["dog", "cat", "doggo"]                        | HeapSort       || ["cat", "dog", "doggo"]
     }
 }
