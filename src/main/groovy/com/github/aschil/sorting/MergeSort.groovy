@@ -1,11 +1,11 @@
 package com.github.aschil.sorting
 
 class MergeSort {
-    static void sort(List<Integer> list) {
+    static <T extends Comparable<? super T>> void sort(List<T> list) {
         mergeSort(list, 0, list.size() - 1)
     }
 
-    static void mergeSort(List<Integer> list, int startingIndex, int endingIndex) {
+    static <T extends Comparable<? super T>> void mergeSort(List<T> list, int startingIndex, int endingIndex) {
         if (startingIndex < endingIndex) {
             int splitIndex = Math.floor((startingIndex + endingIndex) / 2)
             mergeSort(list, startingIndex, splitIndex)
@@ -14,15 +14,15 @@ class MergeSort {
         }
     }
 
-    static void merge(List<Integer> list, int startingIndex, int splitIndex, int endingIndex) {
+    static <T extends Comparable<? super T>> void merge(List<T> list, int startingIndex, int splitIndex, int endingIndex) {
         int lengthOfLeftSubList = splitIndex - startingIndex + 1 // 3
         int lengthOfRightSubList = endingIndex - splitIndex  // 2
 
-        int[] leftSubList = new int[lengthOfLeftSubList + 1]
+        T[] leftSubList = new T[lengthOfLeftSubList + 1]
         (0..(lengthOfLeftSubList - 1)).each {
             leftSubList[it] = list[startingIndex + it]
         }
-        int[] rightSubList = new int[lengthOfRightSubList + 1]
+        T[] rightSubList = new T[lengthOfRightSubList + 1]
         (0..(lengthOfRightSubList - 1)).each {
             rightSubList[it] = list[splitIndex + 1 + it]
         }
@@ -34,7 +34,7 @@ class MergeSort {
                 list[it] = rightSubList[rightIndex]
                 rightIndex++
             } else if (rightIndex > lengthOfRightSubList - 1 ||
-                    leftSubList[leftIndex] <= rightSubList[rightIndex]) {
+                    leftSubList[leftIndex].compareTo(rightSubList[rightIndex]) <= 0) {
                 list[it] = leftSubList[leftIndex]
                 leftIndex++
             } else {
