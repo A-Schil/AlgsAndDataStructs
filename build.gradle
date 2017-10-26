@@ -1,0 +1,17 @@
+group 'com.github.a-schil'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // mandatory dependencies for using Spock
+    compile "org.codehaus.groovy:groovy-all:2.4.12"
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+}
