@@ -1,3 +1,5 @@
+package com.github.aschil.sorting
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
