@@ -50,5 +50,17 @@ class SortingSpec extends Specification {
         ["A", "B", "C"]                                | HeapSort       || ["A", "B", "C"]
         ["B", "a", "A", "b"]                           | HeapSort       || ["A", "B", "a", "b"]
         ["dog", "cat", "doggo"]                        | HeapSort       || ["cat", "dog", "doggo"]
+
+        []                                             | InsertionSort       || []
+        [1, 2, 3]                                      | InsertionSort       || [1, 2, 3]
+        [1, 5, 6, 9, 2]                                | InsertionSort       || [1, 2, 5, 6, 9]
+        [5]                                            | InsertionSort       || [5]
+        [1, 2, 2, 2, 2, 3]                             | InsertionSort       || [1, 2, 2, 2, 2, 3]
+        [2.0, 4.8, 3.995, 3.99999, 1, 9.2357, 3.14159] | InsertionSort       || [1, 2.0, 3.14159, 3.995, 3.99999, 4.8, 9.2357]
+        [1, -1, 0]                                     | InsertionSort       || [-1, 0, 1]
+        ["A", "C", "D", "B"]                           | InsertionSort       || ["A", "B", "C", "D"]
+        ["A", "B", "C"]                                | InsertionSort       || ["A", "B", "C"]
+        ["B", "a", "A", "b"]                           | InsertionSort       || ["A", "B", "a", "b"]
+        ["dog", "cat", "doggo"]                        | InsertionSort       || ["cat", "dog", "doggo"]
     }
 }

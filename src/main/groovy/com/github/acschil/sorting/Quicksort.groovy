@@ -24,17 +24,10 @@ class Quicksort {
         (startingIndex..(endingIndex - 1)).each{
             if ((list[it] <=> pivotElement) <= 0) {
                 pivotIndex++
-                exchange(list, pivotIndex, it)
+                SortingUtilities.exchange(list, pivotIndex, it)
             }
         }
-        exchange(list, pivotIndex + 1, endingIndex)
+        SortingUtilities.exchange(list, pivotIndex + 1, endingIndex)
         return pivotIndex + 1
     }
-
-    private static <T extends Comparable<? super T>> void exchange(List<T> list, int index1, int index2) {
-        T tmp = list[index1]
-        list[index1] = list[index2]
-        list[index2] = tmp
-    }
-
 }

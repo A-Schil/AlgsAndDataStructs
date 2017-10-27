@@ -7,7 +7,7 @@ class HeapSort {
         if (heapSize > 2) {
             buildMaxHeap(list)
             ((list.size() - 1)..1).each {
-                exchange(list, 0, it)
+                SortingUtilities.exchange(list, 0, it)
                 heapSize--
                 maxHeapify(list, heapSize, 0)
             }
@@ -33,7 +33,7 @@ class HeapSort {
             indexOfLargest = rightChildIndex
         }
         if (indexOfLargest != parentIndex) {
-            exchange(list, parentIndex, indexOfLargest)
+            SortingUtilities.exchange(list, parentIndex, indexOfLargest)
             maxHeapify(list, heapSize, indexOfLargest)
         }
     }
@@ -48,11 +48,5 @@ class HeapSort {
 
     private static int rightChild(int index) {
         return 2 * index + 2
-    }
-
-    private static <T extends Comparable<? super T>> void exchange(List<T> list, int index1, int index2) {
-        T tmp = list[index1]
-        list[index1] = list[index2]
-        list[index2] = tmp
     }
 }
