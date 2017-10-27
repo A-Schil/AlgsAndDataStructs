@@ -1,4 +1,4 @@
-package com.github.aschil.sorting
+package com.github.acschil.sorting
 
 class MergeSort {
     static <T extends Comparable<? super T>> void sort(List<T> list) {

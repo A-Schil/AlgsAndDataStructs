@@ -1,11 +1,11 @@
-package com.github.aschil.sorting
+package com.github.acschil.sorting
 
 import spock.lang.Specification
 import spock.lang.Unroll
 
 class SortingSpec extends Specification {
     @Unroll
-    def "sorts listToSort: #listToSort into expected: #expected of numbers using #sortingStrategy"() {
+    def "sorts listToSort: #listToSort into expected: #expected using #sortingStrategy"() {
         when:
         sortingStrategy.sort(listToSort)
 
