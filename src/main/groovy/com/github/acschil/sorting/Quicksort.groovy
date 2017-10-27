@@ -22,7 +22,7 @@ class Quicksort {
         T pivotElement = list[endingIndex]
         int pivotIndex = startingIndex - 1
         (startingIndex..(endingIndex - 1)).each{
-            if (list[it].compareTo(pivotElement) <= 0) {
+            if ((list[it] <=> pivotElement) <= 0) {
                 pivotIndex++
                 exchange(list, pivotIndex, it)
             }

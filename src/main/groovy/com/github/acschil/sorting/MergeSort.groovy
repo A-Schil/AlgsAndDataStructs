@@ -34,7 +34,7 @@ class MergeSort {
                 list[it] = rightSubList[rightIndex]
                 rightIndex++
             } else if (rightIndex > lengthOfRightSubList - 1 ||
-                    leftSubList[leftIndex].compareTo(rightSubList[rightIndex]) <= 0) {
+                    (leftSubList[leftIndex] <=> rightSubList[rightIndex]) <= 0) {
                 list[it] = leftSubList[leftIndex]
                 leftIndex++
             } else {
