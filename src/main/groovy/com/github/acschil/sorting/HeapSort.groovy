@@ -4,11 +4,13 @@ class HeapSort {
 
     static <T extends Comparable<? super T>> void sort(List<T> list) {
         int heapSize = list.size()
-        buildMaxHeap(list)
-        ((list.size() - 1)..1).each {
-            exchange(list, 0, it)
-            heapSize--
-            maxHeapify(list, heapSize, 0)
+        if (heapSize > 2) {
+            buildMaxHeap(list)
+            ((list.size() - 1)..1).each {
+                exchange(list, 0, it)
+                heapSize--
+                maxHeapify(list, heapSize, 0)
+            }
         }
     }
 
