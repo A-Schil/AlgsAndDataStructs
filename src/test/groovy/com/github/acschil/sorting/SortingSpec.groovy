@@ -62,5 +62,17 @@ class SortingSpec extends Specification {
         ["A", "B", "C"]                                | InsertionSort       || ["A", "B", "C"]
         ["B", "a", "A", "b"]                           | InsertionSort       || ["A", "B", "a", "b"]
         ["dog", "cat", "doggo"]                        | InsertionSort       || ["cat", "dog", "doggo"]
+
+        []                                             | SelectionSort       || []
+        [1, 2, 3]                                      | SelectionSort       || [1, 2, 3]
+        [1, 5, 6, 9, 2]                                | SelectionSort       || [1, 2, 5, 6, 9]
+        [5]                                            | SelectionSort       || [5]
+        [1, 2, 2, 2, 2, 3]                             | SelectionSort       || [1, 2, 2, 2, 2, 3]
+        [2.0, 4.8, 3.995, 3.99999, 1, 9.2357, 3.14159] | SelectionSort       || [1, 2.0, 3.14159, 3.995, 3.99999, 4.8, 9.2357]
+        [1, -1, 0]                                     | SelectionSort       || [-1, 0, 1]
+        ["A", "C", "D", "B"]                           | SelectionSort       || ["A", "B", "C", "D"]
+        ["A", "B", "C"]                                | SelectionSort       || ["A", "B", "C"]
+        ["B", "a", "A", "b"]                           | SelectionSort       || ["A", "B", "a", "b"]
+        ["dog", "cat", "doggo"]                        | SelectionSort       || ["cat", "dog", "doggo"]
     }
 }
