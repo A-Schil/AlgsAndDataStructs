@@ -2,7 +2,7 @@ package com.github.acschil.sorting
 
 import spock.lang.Specification
 
-class SortingUtilitiesTest extends Specification {
+class SortingUtilitiesSpec extends Specification {
     def "exchange"() {
         when:
         SortingUtilities.exchange(list, i1, i2)

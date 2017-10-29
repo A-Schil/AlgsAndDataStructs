@@ -74,5 +74,17 @@ class SortingSpec extends Specification {
         ["A", "B", "C"]                                | SelectionSort       || ["A", "B", "C"]
         ["B", "a", "A", "b"]                           | SelectionSort       || ["A", "B", "a", "b"]
         ["dog", "cat", "doggo"]                        | SelectionSort       || ["cat", "dog", "doggo"]
+
+        []                                             | BubbleSort       || []
+        [1, 2, 3]                                      | BubbleSort       || [1, 2, 3]
+        [1, 5, 6, 9, 2]                                | BubbleSort       || [1, 2, 5, 6, 9]
+        [5]                                            | BubbleSort       || [5]
+        [1, 2, 2, 2, 2, 3]                             | BubbleSort       || [1, 2, 2, 2, 2, 3]
+        [2.0, 4.8, 3.995, 3.99999, 1, 9.2357, 3.14159] | BubbleSort       || [1, 2.0, 3.14159, 3.995, 3.99999, 4.8, 9.2357]
+        [1, -1, 0]                                     | BubbleSort       || [-1, 0, 1]
+        ["A", "C", "D", "B"]                           | BubbleSort       || ["A", "B", "C", "D"]
+        ["A", "B", "C"]                                | BubbleSort       || ["A", "B", "C"]
+        ["B", "a", "A", "b"]                           | BubbleSort       || ["A", "B", "a", "b"]
+        ["dog", "cat", "doggo"]                        | BubbleSort       || ["cat", "dog", "doggo"]
     }
 }
