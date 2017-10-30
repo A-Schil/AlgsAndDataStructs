@@ -16,7 +16,7 @@ class Quicksort {
         }
     }
 
-    private static <T extends Comparable<? super T>> int partition(List<T> list,
+    protected static <T extends Comparable<? super T>> int partition(List<T> list,
                                                                    int startingIndex,
                                                                    int endingIndex) {
         T pivotElement = list[endingIndex]
