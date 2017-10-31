@@ -6,11 +6,14 @@ import spock.lang.Unroll
 class CountingSortSpec extends Specification {
     @Unroll
     def "sorts inout where 0 <= input[i] <= 9"() {
-        expect:
-        CountingSort.countingSort(input as int[], k) == output as int[]
+        when:
+        CountingSort.countingSort(input as int[], k)
+
+        then:
+        input == expectedOutput
 
         where:
-        input        | k || output
+        input        | k || expectedOutput
         [0, 1, 2, 3] | 9 || [0, 1, 2, 3]
         [2, 1, 3, 0] | 9 || [0, 1, 2, 3]
         [0, 0, 1, 1] | 9 || [0, 0, 1, 1]
@@ -18,15 +21,25 @@ class CountingSortSpec extends Specification {
         [5, 9, 4, 8] | 9 || [4, 5, 8, 9]
     }
 
-    @Unroll
     def "sorts input size of 0"() {
-        expect:
-        CountingSort.countingSort([] as int[], 9) == [] as int[]
+        setup:
+        int[] input = []
+
+        when:
+        CountingSort.countingSort(input as int[], 9)
+
+        then:
+        input == [] as int[]
     }
 
-    @Unroll
     def "sorts input size of 1"() {
-        expect:
-        CountingSort.countingSort([0] as int[], 9) == [0] as int[]
+        setup:
+        int[] input = [0]
+
+        when:
+        CountingSort.countingSort(input as int[], 9)
+
+        then:
+        input == [0] as int[]
     }
 }

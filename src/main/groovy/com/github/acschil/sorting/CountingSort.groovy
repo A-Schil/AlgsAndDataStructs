@@ -8,7 +8,7 @@ class CountingSort {
      *
      * ref. https://alg12.wikischolars.columbia.edu/file/view/RADIX.pdf/299792868/RADIX.pdf
      */
-    static int[] countingSort(int[] input, int k) {
+    static void countingSort(int[] input, int k) {
         int[] counts = new int[k + 1]
         input.each {
             counts[it]++
@@ -20,6 +20,8 @@ class CountingSort {
         ((input.size() - 1)..0).each {
             output[--counts[input[it]]] = input[it]
         }
-        return output
+        (0..(input.length - 1)).each {
+            input[it] = output[it]
+        }
     }
 }
