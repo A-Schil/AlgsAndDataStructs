@@ -11,7 +11,10 @@ repositories {
 }
 
 dependencies {
-    // mandatory dependencies for using Spock
-    compile "org.codehaus.groovy:groovy-all:2.4.12"
+    compile 'cglib:cglib-nodep:3.2.5'
+
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.2'
+
+    testCompile 'cglib:cglib-nodep:3.2.5'
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
 }
