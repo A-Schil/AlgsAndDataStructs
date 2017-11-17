@@ -1,5 +1,6 @@
 package com.github.acschil.parsing
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -19,7 +20,7 @@ class JsonFlattenerSpec extends Specification {
     }
 
     @Unroll
-    def "flattens json"() {
+    def "flattens json, preserves lists"() {
         expect:
         jsonFlattener.flattenJsonAsMap(json) == expected
 
@@ -28,5 +29,20 @@ class JsonFlattenerSpec extends Specification {
         '''{"a": {"b": [{"d": 2, "e": [4, 5]}, {"f": [{"g": 6}]}]}}''' | ["a.b": [["d": 2, "e": [4, 5]], ["f": [["g": 6]]]]]
         '''{"a": [{"b": {"c": 1, "d": 2}}, {"e": [4, 5]}]}'''          | ["a": [["b.c": 1, "b.d": 2], ["e": [4, 5]]]]
         '''{"a": [{"b": {"c": true, "d": "value"}}, {"e": [4, 5]}]}''' | ["a": [["b.c": true, "b.d": "value"], ["e": [4, 5]]]]
+    }
+
+    def "flattens json"() {
+        String json = '''{"a": {"b": [{"d": 2, "e": [4, 5]}, {"f": [{"g": 6}]}]}}'''
+        Map mapBeforeFlattening = (new ObjectMapper()).readValue(json, Map)
+
+        when:
+        Map result = jsonFlattener.flattenJsonAsMap('''{"a": {"b": [{"d": 2, "e": [4, 5]}, {"f": [{"g": 6}]}]}}''', true)
+
+        then:
+        result == ["a.b[0].d": 2, "a.b[0].e[0]": 4, "a.b[0].e[1]": 5, "a.b[1].f[0].g": 6]
+        mapBeforeFlattening.a.b[0].d == result["a.b[0].d"]
+        mapBeforeFlattening.a.b[0].e[0] == result["a.b[0].e[0]"]
+        mapBeforeFlattening.a.b[0].e[1] == result["a.b[0].e[1]"]
+        mapBeforeFlattening.a.b[1].f[0].g == result["a.b[1].f[0].g"]
     }
 }
