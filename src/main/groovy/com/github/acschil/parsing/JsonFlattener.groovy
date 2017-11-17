@@ -23,13 +23,13 @@ class JsonFlattener {
      * Flattens JSON to a groovy map using a breadth-first traversal
      *
      * @param json string to flatten
-     * @param flattenLists whether to flatten lists (e.g. {"a": [2, 4]} => ["a[0]": 2, "a[1]": 4]
+     * @param preserveLists whether to not flatten lists (e.g. {"a": [2, 4]} => ["a[0]": 2, "a[1]": 4]
      * @return the json as a Groovy Map<String, Object>
      */
-    Map<String, Object> flattenJsonAsMap(String json, boolean flattenLists=false)
+    Map<String, Object> flattenJsonAsMap(String json, boolean preserveLists=false)
             throws IOException, JsonParseException, JsonMappingException {
         Map<String, Object> map = mapper.readValue(json, Map)
-        flattenLists ? flattenMapAndLists(map) : flattenMap(map)
+        preserveLists ? flattenMap(map) : flattenMapAndLists(map)
         return map
     }
 

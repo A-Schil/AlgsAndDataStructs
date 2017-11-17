@@ -22,7 +22,7 @@ class JsonFlattenerSpec extends Specification {
     @Unroll
     def "flattens json, preserves lists"() {
         expect:
-        jsonFlattener.flattenJsonAsMap(json) == expected
+        jsonFlattener.flattenJsonAsMap(json, true) == expected
 
         where:
         json                                                           | expected
@@ -36,7 +36,7 @@ class JsonFlattenerSpec extends Specification {
         Map mapBeforeFlattening = (new ObjectMapper()).readValue(json, Map)
 
         when:
-        Map result = jsonFlattener.flattenJsonAsMap('''{"a": {"b": [{"d": 2, "e": [4, 5]}, {"f": [{"g": 6}]}]}}''', true)
+        Map result = jsonFlattener.flattenJsonAsMap('''{"a": {"b": [{"d": 2, "e": [4, 5]}, {"f": [{"g": 6}]}]}}''')
 
         then:
         result == ["a.b[0].d": 2, "a.b[0].e[0]": 4, "a.b[0].e[1]": 5, "a.b[1].f[0].g": 6]
